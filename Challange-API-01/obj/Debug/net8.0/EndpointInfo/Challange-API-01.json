@@ -1,0 +1,1327 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Api Mottu",
+    "description": "API para Gerenciamento de Motos",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Estacao": {
+      "get": {
+        "tags": [
+          "Estacao"
+        ],
+        "summary": "Lista todas as estações",
+        "description": "Retorna uma lista completa de todas as estações cadastradas.",
+        "responses": {
+          "200": {
+            "description": "Lista obtida com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EstacaoEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EstacaoEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EstacaoEntity"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Nenhuma estação encontrada"
+          },
+          "400": {
+            "description": "Erro ao obter os dados"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Estacao"
+        ],
+        "summary": "Cadastra uma nova estação",
+        "description": "Cria uma nova estação com base nas informações fornecidas.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstacaoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstacaoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstacaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estação criada com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao inserir a estação"
+          }
+        }
+      }
+    },
+    "/api/Estacao/{id}": {
+      "get": {
+        "tags": [
+          "Estacao"
+        ],
+        "summary": "Obtém uma estação específica",
+        "description": "Retorna os detalhes de uma estação com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estação encontrada com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Estação não encontrada"
+          },
+          "400": {
+            "description": "Erro ao obter a estação"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Estacao"
+        ],
+        "summary": "Atualiza uma estação existente",
+        "description": "Atualiza as informações de uma estação com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstacaoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstacaoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstacaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estação atualizada com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha para atualizar a estação"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Estacao"
+        ],
+        "summary": "Remove uma estação existente",
+        "description": "Remove as informações de uma estação com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estação removida com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstacaoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao excluir a estação"
+          }
+        }
+      }
+    },
+    "/api/HistoricoMoto": {
+      "get": {
+        "tags": [
+          "HistoricoMoto"
+        ],
+        "summary": "Lista todos os históricos de motos",
+        "description": "Retorna uma lista completa de todos os históricos de motos cadastrados.",
+        "responses": {
+          "200": {
+            "description": "Lista obtida com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HistoricoMotoEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HistoricoMotoEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HistoricoMotoEntity"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Nenhum histórico encontrado"
+          },
+          "400": {
+            "description": "Erro ao obter os dados"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "HistoricoMoto"
+        ],
+        "summary": "Cadastra um novo histórico de moto",
+        "description": "Cria um novo registro de histórico de moto com base nas informações fornecidas.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistoricoMotoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistoricoMotoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistoricoMotoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Histórico criado com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao inserir o histórico"
+          }
+        }
+      }
+    },
+    "/api/HistoricoMoto/{id}": {
+      "get": {
+        "tags": [
+          "HistoricoMoto"
+        ],
+        "summary": "Obtém um histórico específico",
+        "description": "Retorna os detalhes de um histórico de moto com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Histórico encontrado com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Histórico não encontrado"
+          },
+          "400": {
+            "description": "Erro ao obter o histórico"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "HistoricoMoto"
+        ],
+        "summary": "Atualiza um histórico existente",
+        "description": "Atualiza as informações de um histórico de moto com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistoricoMotoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistoricoMotoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HistoricoMotoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Histórico atualizado com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha para atualizar o histórico"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "HistoricoMoto"
+        ],
+        "summary": "Remove um histórico existente",
+        "description": "Remove as informações de um histórico de moto com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Histórico removido com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricoMotoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao excluir o histórico"
+          }
+        }
+      }
+    },
+    "/api/Moto": {
+      "get": {
+        "tags": [
+          "Moto"
+        ],
+        "summary": "Lista todas as motos",
+        "description": "Retorna uma lista completa de todas as motos cadastradas.",
+        "responses": {
+          "200": {
+            "description": "Lista obtida com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MotoEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MotoEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MotoEntity"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Nenhuma moto encontrada"
+          },
+          "400": {
+            "description": "Erro ao obter os dados"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Moto"
+        ],
+        "summary": "Cadastra uma nova moto",
+        "description": "Cria uma nova moto com base nas informações fornecidas.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Moto criada com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao inserir a moto"
+          }
+        }
+      }
+    },
+    "/api/Moto/{id}": {
+      "get": {
+        "tags": [
+          "Moto"
+        ],
+        "summary": "Obtém uma moto específica",
+        "description": "Retorna os detalhes de uma moto com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Moto encontrada com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Moto não encontrada"
+          },
+          "400": {
+            "description": "Erro ao obter a moto"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Moto"
+        ],
+        "summary": "Atualiza uma moto existente",
+        "description": "Atualiza as informações de uma moto com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MotoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Moto atualizada com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha para atualizar a moto"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Moto"
+        ],
+        "summary": "Remove uma moto existente",
+        "description": "Remove as informações de uma moto com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Moto removida com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotoEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao excluir a moto"
+          }
+        }
+      }
+    },
+    "/api/Usuario": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Lista todos os usuários",
+        "description": "Este endpoint retorna uma lista completa de todos os usuários cadastrados.",
+        "responses": {
+          "200": {
+            "description": "Lista obtida com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UsuarioEntity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UsuarioEntity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UsuarioEntity"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Nenhum usuário encontrado"
+          },
+          "400": {
+            "description": "Erro ao obter os dados"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Cadastra um novo usuário",
+        "description": "Este endpoint cria um novo usuário com base nas informações fornecidas.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário criado com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao inserir o usuário"
+          }
+        }
+      }
+    },
+    "/api/Usuario/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Obtém um usuário específico",
+        "description": "Este endpoint retorna os detalhes de um usuário com base no ID informado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "400": {
+            "description": "Erro ao obter o usuário"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Atualiza um usuário existente",
+        "description": "Este endpoint atualiza as informações de um usuário com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário atualizado com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha para atualizar o usuário"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Remove um usuário existente",
+        "description": "Este endpoint remove as informações de um usuário com base no ID fornecido.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário removido com sucesso",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Falha ao excluir o usuário"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EstacaoDto": {
+        "required": [
+          "dsStatus",
+          "dtCriacao",
+          "nmEstacao"
+        ],
+        "type": "object",
+        "properties": {
+          "idEstacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nmEstacao": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsLocalizacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "nrCapacidade": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dsStatus": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dtCriacao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dtUltimaAtualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dsResponsavel": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EstacaoEntity": {
+        "required": [
+          "dsLocalizacao",
+          "dsResponsavel",
+          "dsStatus",
+          "dtCriacao",
+          "nmEstacao",
+          "nrCapacidade"
+        ],
+        "type": "object",
+        "properties": {
+          "idEstacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nmEstacao": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsLocalizacao": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "nrCapacidade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dsStatus": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dtCriacao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dtUltimaAtualizacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dsResponsavel": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistoricoMotoDto": {
+        "required": [
+          "dtAcao",
+          "idMoto",
+          "idUsuario",
+          "tpAcao"
+        ],
+        "type": "object",
+        "properties": {
+          "idHistorico": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idMoto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tpAcao": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dtAcao": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HistoricoMotoEntity": {
+        "required": [
+          "dtAcao",
+          "idMoto",
+          "idUsuario",
+          "tpAcao"
+        ],
+        "type": "object",
+        "properties": {
+          "idHistorico": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idMoto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tpAcao": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dtAcao": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MotoDto": {
+        "required": [
+          "dsPlaca",
+          "dsStatus",
+          "dsVaga",
+          "idEstacao",
+          "nmModelo"
+        ],
+        "type": "object",
+        "properties": {
+          "idMoto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dsPlaca": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "nmModelo": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsCor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nrAno": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dsStatus": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "idEstacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dsVaga": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MotoEntity": {
+        "required": [
+          "dsPlaca",
+          "dsStatus",
+          "dsVaga",
+          "idEstacao",
+          "nmModelo"
+        ],
+        "type": "object",
+        "properties": {
+          "idMoto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dsPlaca": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "nmModelo": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsCor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nrAno": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dsStatus": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "idEstacao": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dsVaga": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioDto": {
+        "required": [
+          "dsEmail",
+          "dsSenha",
+          "nmUsuario",
+          "tpUsuario"
+        ],
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nmUsuario": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsEmail": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "dsSenha": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "tpUsuario": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioEntity": {
+        "required": [
+          "dsEmail",
+          "dsSenha",
+          "nmUsuario",
+          "tpUsuario"
+        ],
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nmUsuario": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsEmail": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dsSenha": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "tpUsuario": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
